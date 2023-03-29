@@ -1,0 +1,27 @@
+{
+    "name": "orangecode/helpers",
+    "description": "Conjuntos de funções utilizadas na manipulação de dados.",
+    "version": "1.0.0",
+    "keywords": [
+        "orangecode",
+        "laravel",
+        "helpers"
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Orangecode\\Helpers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luiz Fernando Bernardes de Paula",
+            "email": "nandovga@hotmail.com",
+            "role": "developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0"
+    }
+}
