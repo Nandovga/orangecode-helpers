@@ -1,12 +1,12 @@
 <?php
-if (!function_exists('EnumArray')) {
+if (!function_exists('EnumToArray')) {
     /**
      * Realiza a conversão de um enumerado para array
      * @param array $enum
      * @param string|null $type
      * @return array
      */
-    function EnumArray(array $enum, string $type = null): array
+    function EnumToArray(array $enum, string $type = null): array
     {
         $types = [];
         foreach ($enum as $key => $item) {

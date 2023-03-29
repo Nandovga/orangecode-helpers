@@ -1,94 +1,85 @@
 <?php
-if (!function_exists("decimalHoras")){
+if (!function_exists("decimalToHours")){
     /**
-     * Converte as horas em decimal para horas formatadas
      * @param float $decimal
      * @return string
      */
-    function decimalHoras(float $decimal): string
+    function decimalToHours(float $decimal): string
     {
         $decimal = round($decimal, 2);
         $division = explode('.', $decimal);
-        $horas = $division[0];
+        $hours = $division[0];
         if (isset($division[1])) {
             $min = str_pad($division[1], 2, '0', STR_PAD_RIGHT);
             $min = round(($min * 60) / 100, 0, PHP_ROUND_HALF_UP);
         } else
             $min = 0;
-        $horas = str_pad($horas, 2, '0', STR_PAD_LEFT);
+        $hours = str_pad($hours, 2, '0', STR_PAD_LEFT);
         $min = str_pad($min, 2, '0', STR_PAD_LEFT);
-        return $horas . ':' . $min;
+        return $hours . ':' . $min;
     }
 }
 
-if (!function_exists('horaDecimal')) {
-
+if (!function_exists('hoursToDecimal')) {
     /**
-     * Converte as horas no formato de string para decimal
-     * @param string $horas
-     * @return null|string
+     * @param string $hours
+     * @param int $decimais
+     * @return float
      */
-    function horaDecimal(string $horas, int $decimais = 2): ?string
+    function hoursToDecimal(string $hours, int $decimais = 2): float
     {
-        if (!strstr($horas, ':'))
-            return null;
-        $arrHoras = explode(':', $horas);
-        $valorHoras = (int)$arrHoras[0];
-        $valorMinutos = (int)$arrHoras[1];
-        $minutoDecimal = $valorMinutos / 60;
-        return number_format($valorHoras + $minutoDecimal, $decimais, '.', '');
+        if (!strstr($hours, ':'))
+            return 0;
+        $arrHours = explode(':', $hours);
+        $valueHours = (int)$arrHours[0];
+        $valueMinute = (int)$arrHours[1];
+        $minuteDecimal = $valueMinute / 60;
+        return (float) number_format($valueHours + $minuteDecimal, $decimais, '.', '');
     }
 }
 
-if (!function_exists('horasMin')) {
-
+if (!function_exists('hoursToMinute')) {
     /**
-     * Converte as Horas em string para minutos
-     * @param string $horas
+     * @param string $value
      * @return int
      */
-    function horasMin(string $valor): int
+    function hoursToMinute(string $value): int
     {
-        if (strstr($valor, ":")) {
-            $arrayValor = explode(":", $valor);
-            $valorMin = (int)$arrayValor[1];
-            $valorHora = (int)$arrayValor[0];
-            return (int)(($valorHora * 60) + $valorMin);
+        if (strstr($value, ":")) {
+            $arrayValue = explode(":", $value);
+            $valorMin = (int)$arrayValue[1];
+            $valorHours = (int)$arrayValue[0];
+            return (int)(($valorHours * 60) + $valorMin);
         } else
             return 0;
     }
 }
 
-if (!function_exists('minHoras')) {
-
+if (!function_exists('minuteToHours')) {
     /**
-     * Converte os minutos para horas formatadas
-     * @param string $horas
-     * @return int
+     * @param int|float $valor
+     * @return string
      */
-    function minHoras(int|float $valor): string
+    function minuteToHours(int|float $valor): string
     {
-        $valorDivisao = number_format($valor / 60, 2, ',', ''); // valor decimal
-        $arrayValor = explode(",", $valorDivisao);
-        $valorHora = $arrayValor[0];
-        $valorMin = round(($arrayValor[1] * 60) / 100);
-        if (strlen($valorHora) == 1) {
-            $valorHora = "0" . $valorHora;
-        }
-        if (strlen($valorMin) < 2) {
-            $valorMin = "0" . $valorMin;
-        }
-        return $valorHora . ":" . $valorMin;
+        $division = number_format($valor / 60, 2, ',', ''); // valor decimal
+        $arrayValue = explode(",", $division);
+        $valueHours = $arrayValue[0];
+        $valueMin = round(($arrayValue[1] * 60) / 100);
+        if (strlen($valueHours) == 1)
+            $valueHours = "0" . $valueHours;
+        if (strlen($valueMin) < 2)
+            $valueMin = "0" . $valueMin;
+        return $valueHours . ":" . $valueMin;
     }
 }
 
-if (!function_exists('secondsHoras')) {
+if (!function_exists('secondsToHours')) {
     /**
-     * Converte segundos para horas
      * @param int $seconds
      * @return string
      */
-    function secondsHoras(int $seconds): string
+    function secondsToHours(int $seconds): string
     {
         $minutes = $seconds / 60;
         return floatval(number_format($minutes / 60, 2, '.', ''));

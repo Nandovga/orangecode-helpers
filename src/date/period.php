@@ -1,27 +1,25 @@
 <?php
-if (!function_exists('calcHorasPeriodo')) {
+if (!function_exists('sumHours')) {
     /**
-     * Retorna a soma das horas por periodo
-     * @param array $horas
+     * @param array $hours
      * @return float
      */
-    function calcHorasPeriodo(array $horas): float
+    function sumHours(array $hours): float
     {
-        $contador = null;
-        $somaHoras = 0;
-        foreach ($horas as $key => $value) {
+        if (count($hours) % 2 !== 0) return 0;
+        $count = null;
+        $sumHours = 0;
+        foreach ($hours as $key => $value)
             if ($key % 2 === 0)
-                $contador = (float) horaDecimal($value);
+                $count = hoursToDecimal($value);
             else
-                $somaHoras += ((float) horaDecimal($value) - $contador);
-        }
-        return count($horas) % 2 === 0 ? $somaHoras : 0;
+                $sumHours += (hoursToDecimal($value) - $count);
+        return $sumHours;
     }
 }
 
 if (!function_exists('isDateInRange')) {
     /**
-     * Verfirica se a data está entra as data parametrizadas
      * @param string $date
      * @param string $startDate
      * @param string $endDate
