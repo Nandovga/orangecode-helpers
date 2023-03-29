@@ -11,7 +11,7 @@
 A instalação do pacote é bem simples, basta executar essa linha de comando no terminal de sua aplicação.
 
 ```bash
-composer require orangecode/laravel-helpers 
+composer require orangecode/helpers
 ```
 
 ### ⚙️ Funções disponíveis
