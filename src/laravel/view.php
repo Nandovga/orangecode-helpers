@@ -1,7 +1,6 @@
 <?php
 if (!function_exists("isActiveRoute")){
     /**
-     * Verifica se a rota parametrizada está sendo acessada
      * @param string|array $route
      * @param mixed $return
      * @param mixed $falied

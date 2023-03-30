@@ -1,7 +1,6 @@
 <?php
 if (!function_exists('EnumToArray')) {
     /**
-     * Realiza a conversão de um enumerado para array
      * @param array $enum
      * @param string|null $type
      * @return array

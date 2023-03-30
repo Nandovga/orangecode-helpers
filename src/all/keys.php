@@ -1,7 +1,6 @@
 <?php
 if (!function_exists('genereteKey')) {
     /**
-     * Gera uma chave randomicamente
      * @param int $number
      * @return string
      */
