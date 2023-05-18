@@ -30,44 +30,20 @@ if (!function_exists('BuildTree')) {
      * @param string|null $type
      * @return array
      */
-    function BuildTree(array $array, string $attr = "parent"): array
+    function BuildTree(array $data)
     {
-        //Agrupa os dados pelo $attr
-        $a = array_reduce($array, function ($arr, $item) use ($attr) {
-            $value = $item[$attr];
-            if (!isset($arr[$value]))
-                $arr[$value] = array();
-            $arr[$value][] = $item;
-            return $arr;
-        }, array());
-        foreach ($a as $key => $value)
-            foreach ($value as $v)
-                $result[$key][] = $v;
-
-        $build = [];
-        foreach ($array as $key => $value)
-            if ($value[$attr] === null)
-                $build[] = $value;
-
-        /**
-         * Realiza a montage da estrutura de dados
-         * @param array $build
-         * @param array $result
-         * @return array
-         */
-        function genereteTree(array $build, array $result): array
-        {
-            $arr = [];
-            foreach ($build as $key => $value) {
-                $arr[$key] = $value;
-                if (isset($result[$value["id"]]))
-                    $arr[$key]["children"] = genereteTree($result[$value["id"]], $result);
-                else
-                    return $build;
-            }
-            return $arr;
-        }
-
-        return genereteTree($build, $result);
+        $nodes = [];
+        foreach ($data as $item)
+            $nodes[$item["id"]] = $item;
+        $array = [];
+        foreach ($data as $item)
+            if (isset($nodes[$item["parent"]])){
+                $parentNode = &$nodes[$item["parent"]];
+                if (!isset($parentNode["children"]))
+                    $parentNode["children"] = [];
+                $parentNode["children"][] = &$nodes[$item["id"]];
+            } else
+                $array[] = &$nodes[$item["id"]];
+        return $array;
     }
 }
