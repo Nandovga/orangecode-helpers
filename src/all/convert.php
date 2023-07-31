@@ -47,3 +47,67 @@ if (!function_exists('BuildTree')) {
         return $array;
     }
 }
+
+if (!function_exists('mask')) {
+
+    /**
+     * Aplica a mascar nas string
+     * @param string $value
+     * @param string $mask
+     * @return string
+     */
+    function mask(string $value, string $mask): string
+    {
+        $maskared = '';
+        $k = 0;
+        for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+            if ($mask[$i] == '#') {
+                if (isset($value[$k])) {
+                    $maskared .= $value[$k++];
+                }
+            } else {
+                if (isset($mask[$i])) {
+                    $maskared .= $mask[$i];
+                }
+            }
+        }
+        return $maskared;
+    }
+}
+
+if (!function_exists('changeEnvironmentVariable')) {
+
+    /**
+     * Realiza a mudança das variaveis de ambiente
+     * @param $key
+     * @param $value
+     */
+    function changeEnvironmentVariable($key,$value)
+    {
+        $path = base_path('.env');
+
+        if(is_bool(env($key)))
+        {
+            $old = env($key)? 'true' : 'false';
+        }
+        elseif(env($key)===null){
+            $old = 'null';
+        }
+        else{
+            $old = env($key);
+        }
+
+        if (file_exists($path)) {
+            file_put_contents($path, str_replace(
+                "$key=".$old, "$key=".$value, file_get_contents($path)
+            ));
+        }
+    }
+}
+
+
+
+
+
+
+

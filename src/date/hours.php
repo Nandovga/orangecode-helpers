@@ -85,3 +85,4 @@ if (!function_exists('secondsToHours')) {
         return floatval(number_format($minutes / 60, 2, '.', ''));
     }
 }
+
