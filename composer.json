@@ -16,7 +16,7 @@
       "src/all/convert.php",
       "src/date/hours.php",
       "src/date/period.php",
-      "src/date/hours.php",
+      "src/date/Time.php",
       "src/laravel/view.php",
       "src/laravel/Cropper.php"
     ]

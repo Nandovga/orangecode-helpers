@@ -1,12 +1,7 @@
 <?php
 
-namespace App\Helpers\DateTimeUtils;
-
 class Time
 {
-    /** @var array */
-    private $feriado;
-
     /** @var string */
     private $inicio;
 
@@ -15,9 +10,8 @@ class Time
 
     public function __construct()
     {
-        $this->feriado = $this->getFeriados();
-        $this->inicio = env('DATE_TIME_UTILS_INICIO', '08:00');
-        $this->fim = env('DATE_TIME_UTILS_FINAL', '18:00');
+        $this->inicio = '08:00';
+        $this->fim = '18:00';
     }
 
     /**
@@ -30,7 +24,7 @@ class Time
     {
         $vefiryFeriado = false;
         while (!$vefiryFeriado) {
-            if (!$this->verifyFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6))
+            if (!getFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6))
                 $vefiryFeriado = true;
             else
                 $start->add(\DateInterval::createFromDateString('+1day'));
@@ -47,9 +41,10 @@ class Time
             $intervalo = 'P0DT' . $horas . 'H';
             $result = $start->add(new \DateInterval($intervalo));
         }
+
         $vefiryFeriado = false;
         while (!$vefiryFeriado) {
-            if (!$this->verifyFeriado($result) && ($result->format('w') != 0 && $result->format('w') != 6))
+            if (!getFeriado($result) && ($result->format('w') != 0 && $result->format('w') != 6))
                 $vefiryFeriado = true;
             else
                 $result->add(\DateInterval::createFromDateString('+1day'));
@@ -103,12 +98,12 @@ class Time
                     $dateDay['i'] = new \DateTime($start->format('Y-m-d') . $this->inicio);
                     $dateDay['f'] = new \DateTime($start->format('Y-m-d') . $this->fim);
                     if ($dateDay['i']->format('Y-m-d') !== $end->format('Y-m-d')) {
-                        if (!$this->verifyFeriado($dateDay['i']) && ($dateDay['i']->format('w') != 0 && $dateDay['i']->format('w') != 6)) {
+                        if (!getFeriado($dateDay['i']) && ($dateDay['i']->format('w') != 0 && $dateDay['i']->format('w') != 6)) {
                             $d = $dateDay['i']->diff($dateDay['f']);
                             $result = $addHoras($result, $d);
                         }
                     } else {
-                        if (!$this->verifyFeriado($end) && ($end->format('w') != 0 && $end->format('w') != 6)) {
+                        if (!getFeriado($end) && ($end->format('w') != 0 && $end->format('w') != 6)) {
                             $d = $dateDay['i']->diff($end);
                             if ($d->invert === 0)
                                 $result = $addHoras($result, $d);
@@ -118,7 +113,7 @@ class Time
             } else {
                 //Diferença do segundo dia util
                 $start->add(\DateInterval::createFromDateString('+1day'));
-                if (!$this->verifyFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6)) {
+                if (!getFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6)) {
                     $lastDay = new \DateTime($start->format('Y-m-d') . $this->inicio);
                     $lastDayDiff = $lastDay->diff($end);
                     $result = $addHoras($result, $lastDayDiff);
@@ -128,44 +123,6 @@ class Time
             $result = $addHoras($result, $diff);
 
         $horas = ($result['dias'] * 24) + $result['horas'] + ($result['minutos'] / 60) + (($result['segundos'] / 60) / 60);
-        return $returnString ? decimalHoras($horas) : $horas;
-    }
-
-    /*
-    |-----------------------------------------
-    | Filtro
-    |-----------------------------------------
-    | Todos as rotas de manipulação de filtro
-    | dos chamados
-    */
-
-    /**
-     * Retorna os feridados do arquivo
-     * @return array
-     */
-    private function getFeriados(): array
-    {
-        $path = __DIR__ . DIRECTORY_SEPARATOR . 'feriados';
-        if (!file_exists($path))
-            mkdir($path, 777);
-        $file = $path . DIRECTORY_SEPARATOR . date('Y') . '.txt';
-        if (!file_exists($file))
-            abort(500, 'Não foi possível encontrar o arquivo de feriados!');
-        return json_decode(file_get_contents($file));
-    }
-
-    /**
-     * Verifica se a data informada é feriado
-     * @param \DateTime $date
-     * @return bool
-     */
-    private function verifyFeriado(\DateTime $date)
-    {
-        foreach ($this->feriado as $dia) {
-            $dia = isset($dia->date) ? $dia->date : $dia;
-            if ($date->format('d-m') == \DateTime::createFromFormat('d/m/Y', $dia)->format('d-m'))
-                return true;
-        }
-        return false;
+        return $returnString ? decimalToHours($horas) : $horas;
     }
 }
