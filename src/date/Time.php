@@ -10,6 +10,8 @@ class Time
 
     public function __construct()
     {
+        //$this->inicio = env('DATE_TIME_UTILS_INICIO', '08:00');
+        //$this->fim = env('DATE_TIME_UTILS_FINAL', '18:00');
         $this->inicio = '08:00';
         $this->fim = '18:00';
     }

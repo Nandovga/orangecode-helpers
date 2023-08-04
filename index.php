@@ -1,16 +1,11 @@
 <?php require './vendor/autoload.php'; ?>
-<?php
-
-$test = new Time();
-var_dump($test);
-?>
 
 <!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>orangecode-helpers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
@@ -213,7 +208,17 @@ var_dump($test);
                             <br/>
                             <span>Calcula em horas a diferença de horas uteis de acordo com parametro</span>
                             <br/>
-                            <span><u>Result:</u> <?php echo '...' ?></span>
+                            <span><u>Result:</u>
+                                <?php
+                                    $time = new Time();
+                                    $inicio = new DateTime('now');
+                                    $fim = new DateTime('1 day');
+
+                                    $result = $time->getHorasUteis($inicio, $fim);
+
+                                    var_dump($result);
+                                ?>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -228,24 +233,24 @@ var_dump($test);
     <div class="accordion" id="laravel">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    <strong>file:</strong>. view.php
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-cropper" aria-expanded="false" aria-controls="flush-cropper">
+                    <strong>file:</strong>. Cropper.php (class)
                 </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#laravel">
+            <div id="flush-cropper" class="accordion-collapse collapse" data-bs-parent="#laravel">
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>...</code>
+                            <code>public static function thumb(string $pathImage, int $width, int $height): ?string {}</code>
                             <br/>
-                            <span>...</span>
+                            <span>Realiza o corte da imagem de acordo com parametro</span>
                             <br/>
                             <span><u>Result:</u> <?php echo '...' ?></span>
                         </li>
                         <li>
-                            <code>...</code>
+                            <code>public static function flush(string $pathImage): void {}</code>
                             <br/>
-                            <span>...</span>
+                            <span>Remove as imagens em cache</span>
                             <br/>
                             <span><u>Result:</u> <?php echo '...' ?></span>
                         </li>
@@ -255,17 +260,17 @@ var_dump($test);
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    <strong>file:</strong>. Cropper.php (class)
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-view" aria-expanded="false" aria-controls="flush-view">
+                    <strong>file:</strong>. view.php
                 </button>
             </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#laravel">
+            <div id="flush-view" class="accordion-collapse collapse" data-bs-parent="#laravel">
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>...</code>
+                            <code>function isActiveRoute(string | array $route, mixed $return = 'active', mixed $falied = ""): mixed {}</code>
                             <br/>
-                            <span>...</span>
+                            <span>Verifica se a rota esta ativa.</span>
                             <br/>
                             <span><u>Result:</u> <?php echo '...' ?></span>
                         </li>
