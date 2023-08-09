@@ -44,7 +44,7 @@
                             </span>
                         </li>
                         <li>
-                            <code>function BuildTree(array $data) {}</code>
+                            <code>function BuildTree(array $data): array {}</code>
                             <br/>
                             <span>Realiza a montagem da estrutura de dados para componente TreeList</span>
                             <br/>
@@ -58,6 +58,17 @@
                                     ];
 
                                     var_dump(BuildTree($dados));
+                                ?>
+                            </span>
+                        </li>
+                        <li>
+                            <code>function BuildTreeExists(array $data): array {}</code>
+                            <br/>
+                            <span>Realiza a montagem da árvore de dados somente com os dados selecionáveis</span>
+                            <br/>
+                            <span><u>Result:</u>
+                                <?php
+                                    //
                                 ?>
                             </span>
                         </li>
