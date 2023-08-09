@@ -27,12 +27,12 @@ composer require orangecode/helpers
 - Manipulação de chaves:
     - [x] <b style='color: #3CA3E8'>genereteKey</b> Gera senhas de forma randomica
 - Manipulação de data e horas:
-    - [x] <b style='color: #3CA3E8'>decimalToHours (scriptcase + suporte)</b> Converte as horas de string para decimal
-    - [x] <b style='color: #3CA3E8'>hoursToDecimal (scriptcase + suporte)</b> Converte um número do tipo float para string
-    - [x] <b style='color: #3CA3E8'>hoursToMinute (scriptcase)</b> Converte as horas em minutos
-    - [x] <b style='color: #3CA3E8'>minuteToHours (scriptcase)</b> Converte os minutos para horas
+    - [x] <b style='color: #3CA3E8'>decimalToHours</b> Converte as horas de string para decimal
+    - [x] <b style='color: #3CA3E8'>hoursToDecimal</b> Converte um número do tipo float para string
+    - [x] <b style='color: #3CA3E8'>hoursToMinute</b> Converte as horas em minutos
+    - [x] <b style='color: #3CA3E8'>minuteToHours</b> Converte os minutos para horas
     - [x] <b style='color: #3CA3E8'>secondsToHours</b> Converte os segundos para horas
-    - [x] <b style='color: #3CA3E8'>sumHours (suporte)</b> Retorna a soma das horas por periodo
+    - [x] <b style='color: #3CA3E8'>sumHours</b> Retorna a soma das horas por periodo
     - [x] <b style='color: #3CA3E8'>isDateInRange</b> Verifica se a data está entre as datas parametrizadas
 - Conversão de dados:
     - [x] <b style='color: #3CA3E8'>EnumArray</b> Converte um enumerado para array
