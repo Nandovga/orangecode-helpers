@@ -20,15 +20,16 @@ if (!function_exists('SumHours')) {
     }
 }
 
-if (!function_exists('isDateInRange')) {
+if (!function_exists('IsDateInRange')) {
     /**
+     * Retorna se a data informada esta no range (inicio/fim)
      * @param string $date
      * @param string $startDate
      * @param string $endDate
      * @return bool
      * @throws Exception
      */
-    function isDateInRange(string $date, string $startDate, string $endDate): bool
+    function IsDateInRange(string $date, string $startDate, string $endDate): bool
     {
         $date = new DateTime($date);
         $start = new DateTime($startDate);
@@ -37,14 +38,14 @@ if (!function_exists('isDateInRange')) {
     }
 }
 
-if (!function_exists('getMonth')) {
+if (!function_exists('GetMonth')) {
 
     /**
      * Retorna o mês de acordo com paramentro
      * @param int $month
      * @return string
      */
-    function getMonth(int $month): string
+    function GetMonth(int $month): string
     {
         switch ($month){
             case 1: return 'Janeiro';
@@ -64,7 +65,7 @@ if (!function_exists('getMonth')) {
     }
 }
 
-if (!function_exists('getFeriado')) {
+if (!function_exists('GetFeriado')) {
     /**
      * Verifica se a data atual passada por parametro é feriado
      * Obs.:
@@ -76,7 +77,7 @@ if (!function_exists('getFeriado')) {
      * @param DateTime $data
      * @return bool
      */
-    function getFeriado (\DateTime $data): bool
+    function GetFeriado (\DateTime $data): bool
     {
         $dataOriginal = $data->getTimestamp();
         $ano = (int) $data->format('Y');
@@ -109,7 +110,7 @@ if (!function_exists('getFeriado')) {
     }
 }
 
-if (!function_exists('diasUteis'))
+if (!function_exists('DiasUteis'))
 {
     /**
      * Recebe como parametro um objeto data inicial e um objeto data final e faz a contagem dos dias
@@ -118,7 +119,7 @@ if (!function_exists('diasUteis'))
      * @param DateTime $fim
      * @return int
      */
-    function diasUteis (DateTime $inicio, DateTime $fim): int
+    function DiasUteis (DateTime $inicio, DateTime $fim): int
     {
         $dias = 0;
 

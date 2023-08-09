@@ -1,23 +1,22 @@
 <?php
-
 class Time
 {
-    /** @var string */
-    private $inicio;
-
-    /** @var string */
-    private $fim;
-
-    public function __construct()
+    /**
+     * @param string $inicio
+     * @param string $fim
+     */
+    public function __construct(
+        private string $inicio = '08:00',
+        private string $fim = '18:00'
+    )
     {
-        //$this->inicio = env('DATE_TIME_UTILS_INICIO', '08:00');
-        //$this->fim = env('DATE_TIME_UTILS_FINAL', '18:00');
-        $this->inicio = '08:00';
-        $this->fim = '18:00';
+        //
     }
 
     /**
-     * Calcula a diferença em horas comerciais entre a data informada e a horas do segundo paramentro
+     * Calcula a diferença em horas comerciais entre a data informada e a horas do segundo paramentro.
+     * Primeiro parametro: Data e hora, segundo parametro: horas a serem adicionadas,
+     * o resultado será o dia/data com a hora total útil restante.
      * @param \DateTime $start = Data Inicial
      * @param int $horas = Horas adicionadas
      * @return \DateTime
@@ -26,7 +25,7 @@ class Time
     {
         $vefiryFeriado = false;
         while (!$vefiryFeriado) {
-            if (!getFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6))
+            if (!GetFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6))
                 $vefiryFeriado = true;
             else
                 $start->add(\DateInterval::createFromDateString('+1day'));
@@ -46,7 +45,7 @@ class Time
 
         $vefiryFeriado = false;
         while (!$vefiryFeriado) {
-            if (!getFeriado($result) && ($result->format('w') != 0 && $result->format('w') != 6))
+            if (!GetFeriado($result) && ($result->format('w') != 0 && $result->format('w') != 6))
                 $vefiryFeriado = true;
             else
                 $result->add(\DateInterval::createFromDateString('+1day'));
@@ -62,7 +61,7 @@ class Time
      * @return string
      * @throws \Exception
      */
-    public function getHorasUteis(\DateTime $start, \DateTime $end, bool $returnString = true)
+    public function getHorasUteis(\DateTime $start, \DateTime $end, bool $returnString = true): string
     {
         $result = [
             'dias' => 0,
@@ -111,12 +110,12 @@ class Time
                     $dateDay['f'] = new \DateTime($start->format('Y-m-d') . $this->fim);
 
                     if ($dateDay['i']->format('Y-m-d') !== $end->format('Y-m-d')) {
-                        if (!getFeriado($dateDay['i']) && ($dateDay['i']->format('w') != 0 && $dateDay['i']->format('w') != 6)) {
+                        if (!GetFeriado($dateDay['i']) && ($dateDay['i']->format('w') != 0 && $dateDay['i']->format('w') != 6)) {
                             $d = $dateDay['i']->diff($dateDay['f']);
                             $result = $addHoras($result, $d);
                         }
                     } else {
-                        if (!getFeriado($end) && ($end->format('w') != 0 && $end->format('w') != 6)) {
+                        if (!GetFeriado($end) && ($end->format('w') != 0 && $end->format('w') != 6)) {
                             $d = $dateDay['i']->diff($end);
                             if ($d->invert === 0)
                                 $result = $addHoras($result, $d);
@@ -129,7 +128,7 @@ class Time
             } else {
                 //Diferença do segundo dia util
                 $start->add(\DateInterval::createFromDateString('+1day'));
-                if (!getFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6)) {
+                if (!GetFeriado($start) && ($start->format('w') != 0 && $start->format('w') != 6)) {
                     $lastDay = new \DateTime($start->format('Y-m-d') . $this->inicio);
                     $lastDayDiff = $lastDay->diff($end);
                     $result = $addHoras($result, $lastDayDiff);

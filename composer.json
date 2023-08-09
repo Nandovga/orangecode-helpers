@@ -17,8 +17,7 @@
       "src/date/hours.php",
       "src/date/period.php",
       "src/date/Time.php",
-      "src/laravel/view.php",
-      "src/laravel/Cropper.php"
+      "src/laravel/view.php"
     ]
   },
   "authors": [

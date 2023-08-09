@@ -1,12 +1,12 @@
 <?php
-if (!function_exists("isActiveRoute")){
+if (!function_exists("IsActiveRoute")){
     /**
      * @param string|array $route
      * @param mixed $return
      * @param mixed $falied
      * @return mixed
      */
-    function isActiveRoute(
+    function IsActiveRoute(
         string | array $route,
         mixed $return = 'active',
         mixed $falied = ""
@@ -27,8 +27,9 @@ if (!function_exists('ChangeEnvironmentVariable')) {
      * Realiza a mudança das variaveis de ambiente
      * @param $key
      * @param $value
+     * @return void
      */
-    function ChangeEnvironmentVariable($key,$value)
+    function ChangeEnvironmentVariable($key,$value): bool
     {
         $path = base_path('.env');
 

@@ -62,7 +62,7 @@
                             </span>
                         </li>
                         <li>
-                            <code>function mask(string $value, string $mask): string {}</code>
+                            <code>function Mask(string $value, string $mask): string {}</code>
                             <br/>
                             <span>Utilizada para aplicar uma máscara a um determinado valor.</span>
                             <br/>
@@ -70,7 +70,7 @@
                                 <?php
                                     $cpf = '32132145699';
 
-                                    var_dump(mask($cpf, '###.###.###-##'));
+                                    var_dump(Mask($cpf, '###.###.###-##'));
                                 ?>
                             </span>
                         </li>
@@ -88,13 +88,13 @@
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>function genereteKey(int $number = 8): string {}</code>
+                            <code>function GenereteKey(int $number = 8): string {}</code>
                             <br/>
                             <span>Gera senha de forma randomica</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(genereteKey());
+                                    var_dump(GenereteKey());
                                 ?>
                             </span>
                         </li>
@@ -119,57 +119,57 @@
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>function decimalToHours(float $decimal): string {}</code>
+                            <code>function DecimalToHours(float $decimal): string {}</code>
                             <br/>
                             <span>Converte decimal para horas</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(decimalToHours(1.5));
+                                    var_dump(DecimalToHours(1.5));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function hoursToDecimal(string $hours, int $decimais = 2): float {}</code>
+                            <code>function HoursToDecimal(string $hours, int $decimais = 2): float {}</code>
                             <br/>
                             <span>Converte horas para decimal</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(hoursToDecimal('2:30'));
+                                    var_dump(HoursToDecimal('2:30'));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function hoursToMinute(string $value): int {}</code>
+                            <code>function HoursToMinute(string $value): int {}</code>
                             <br/>
                             <span>Converte horas para minuto</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(hoursToMinute('1:00'));
+                                    var_dump(HoursToMinute('1:00'));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function minuteToHours(int|float $valor): string</code>
+                            <code>function MinuteToHours(int|float $valor): string</code>
                             <br/>
                             <span>Converte minutos para horas</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(minuteToHours(65));
+                                    var_dump(MinuteToHours(65));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function secondsToHours(int $seconds): string</code>
+                            <code>function SecondsToHours(int $seconds): string</code>
                             <br/>
                             <span>Converte segundos para horas</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(secondsToHours(6000));
+                                    var_dump(SecondsToHours(6000));
                                 ?>
                             </span>
                         </li>
@@ -187,18 +187,18 @@
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>function sumHours(array $hours): float {}</code>
+                            <code>function SumHours(array $hours): float {}</code>
                             <br/>
                             <span>Soma as horas dentro de um periodo</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(sumHours(['09:00', '16:00', '10:30', '15:25']));
+                                    var_dump(SumHours(['09:00', '16:00', '10:30', '15:25']));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function isDateInRange(string $date, string $startDate, string $endDate): bool {}</code>
+                            <code>function IsDateInRange(string $date, string $startDate, string $endDate): bool {}</code>
                             <br/>
                             <span>Retorna se a data informada esta no range (inicio/fim)</span>
                             <br/>
@@ -208,34 +208,34 @@
                                     $ini = date('2023-05-01');
                                     $fim = date('2023-05-10');
 
-                                    var_dump(isDateInRange($date, $ini, $fim));
+                                    var_dump(IsDateInRange($date, $ini, $fim));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function getMonth(int $month): string {}</code>
+                            <code>function GetMonth(int $month): string {}</code>
                             <br/>
                             <span>Retorna no nome do mês</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(getMonth(2));
+                                    var_dump(GetMonth(2));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function getFeriado (\DateTime $data): bool {}</code>
+                            <code>function GetFeriado (\DateTime $data): bool {}</code>
                             <br/>
                             <span>Verifica se a data atual passada por parametro é feriado</span>
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(getFeriado(new DateTime('2023-11-15')));
+                                    var_dump(GetFeriado(new DateTime('2023-11-15')));
                                 ?>
                             </span>
                         </li>
                         <li>
-                            <code>function diasUteis (DateTime $inicio, DateTime $fim): int {}</code>
+                            <code>function DiasUteis (DateTime $inicio, DateTime $fim): int {}</code>
                             <br/>
                             <span>Faz a contagem dos dias sem considerar os dias sábado, domingo e feriados nacionais, retorna o total da contagem</span>
                             <br/>
@@ -244,7 +244,7 @@
                                     $ini = new DateTime('2023-11-13');
                                     $fim = new DateTime('2023-11-17');
 
-                                    var_dump(diasUteis($ini, $fim));
+                                    var_dump(DiasUteis($ini, $fim));
                                 ?>
                             </span>
                         </li>
@@ -286,7 +286,7 @@
                             <span><u>Result:</u>
                                 <?php
                                     $ini = new DateTime('2023-11-14 10:01:00');
-                                    $fim = new DateTime('2023-11-16 10:01:00');
+                                    $fim = new DateTime('2023-11-16 10:02:00');
                                     $time = new Time();
                                     $result = $time->getHorasUteis($ini, $fim);
 
@@ -307,33 +307,6 @@
     <div class="accordion" id="laravel">
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-cropper" aria-expanded="false" aria-controls="flush-cropper">
-                    <strong>file:</strong>. Cropper.php (class)
-                </button>
-            </h2>
-            <div id="flush-cropper" class="accordion-collapse collapse" data-bs-parent="#laravel">
-                <div class="accordion-body">
-                    <ul>
-                        <li>
-                            <code>public static function thumb(string $pathImage, int $width, int $height): ?string {}</code>
-                            <br/>
-                            <span>Realiza o corte da imagem de acordo com parametro</span>
-                            <br/>
-                            <span><u>Result:</u> <?php echo '...' ?></span>
-                        </li>
-                        <li>
-                            <code>public static function flush(string $pathImage): void {}</code>
-                            <br/>
-                            <span>Remove as imagens em cache</span>
-                            <br/>
-                            <span><u>Result:</u> <?php echo '...' ?></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-view" aria-expanded="false" aria-controls="flush-view">
                     <strong>file:</strong>. view.php
                 </button>
@@ -342,14 +315,14 @@
                 <div class="accordion-body">
                     <ul>
                         <li>
-                            <code>function isActiveRoute(string | array $route, mixed $return = 'active', mixed $falied = ""): mixed {}</code>
+                            <code>function IsActiveRoute(string | array $route, mixed $return = 'active', mixed $falied = ""): mixed {}</code>
                             <br/>
                             <span>Verifica se a rota esta ativa.</span>
                             <br/>
                             <span><u>Result:</u> <?php echo '...' ?></span>
                         </li>
                         <li>
-                            <code>function changeEnvironmentVariable($key,$value) {}</code>
+                            <code>function ChangeEnvironmentVariable($key,$value) {}</code>
                             <br/>
                             <span>Realiza a mudança das variaveis de ambiente</span>
                             <br/>
