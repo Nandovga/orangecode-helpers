@@ -1,6 +1,8 @@
 <?php
 if (!function_exists('sumHours')) {
     /**
+     * Recebe um array de horas em string e retorna a soma das diferenças entre os pares consecutivos de horas
+     * convertidas para decimal, desde que o número de elementos no array seja par.
      * @param array $hours
      * @return float
      */
@@ -122,7 +124,7 @@ if (!function_exists('diasUteis'))
 
         while ($inicio < $fim)
         {
-            if ($inicio->format('w') != 6 && $inicio->format('w') != 0 && getFeriado($inicio) == false)
+            if ($inicio->format('w') != 6 && $inicio->format('w') != 0 && !getFeriado($inicio))
             {
                 $dias += 1;
             }

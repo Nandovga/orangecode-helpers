@@ -55,7 +55,8 @@ class Time
     }
 
     /**
-     * Calcula em horas a diferença de horas uteis de acordo com parametro
+     * Calcula em horas a diferença de horas uteis de acordo com parametro.
+     * Para data inicio e fim iguais considere especificar as horas, não será considerado o expediente no resultado apenas a diferença integral.
      * @param \DateTime $start
      * @param \DateTime $end
      * @return string
@@ -69,7 +70,7 @@ class Time
             'minutos' => 0,
             'segundos' => 0
         ];
-        $diff = $start->diff($end);
+        $diff = $start->diff($end); var_dump($diff);
 
         /**
          * Adição das horas
@@ -93,12 +94,22 @@ class Time
             $firtsDayDiff = $start->diff($firtsDay);
             $result = $addHoras($result, $firtsDayDiff);
 
+            //Controle loop extra (bug)
+            $ultimoDia = false;
+
             //verifica se a diferença e mais de 1 dia
             if ($diff->days > 0) {
                 for ($i = 0; $i < ($diff->days + 1); $i++) {
+
+                    //Impede loop extra (bug)
+                    if ($ultimoDia)
+                        continue;
+
                     $start->add(\DateInterval::createFromDateString('+1day'));
+
                     $dateDay['i'] = new \DateTime($start->format('Y-m-d') . $this->inicio);
                     $dateDay['f'] = new \DateTime($start->format('Y-m-d') . $this->fim);
+
                     if ($dateDay['i']->format('Y-m-d') !== $end->format('Y-m-d')) {
                         if (!getFeriado($dateDay['i']) && ($dateDay['i']->format('w') != 0 && $dateDay['i']->format('w') != 6)) {
                             $d = $dateDay['i']->diff($dateDay['f']);
@@ -109,6 +120,9 @@ class Time
                             $d = $dateDay['i']->diff($end);
                             if ($d->invert === 0)
                                 $result = $addHoras($result, $d);
+
+                            //Controle loop extra (bug)
+                            $ultimoDia = true;
                         }
                     }
                 }
