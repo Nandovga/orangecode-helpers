@@ -1,4 +1,4 @@
-<?php require './vendor/autoload.php'; ?>
+<?php require './../vendor/autoload.php'; ?>
 
 <!doctype html>
 <html lang="pt-br">
@@ -71,17 +71,6 @@
                                     $cpf = '32132145699';
 
                                     var_dump(mask($cpf, '###.###.###-##'));
-                                ?>
-                            </span>
-                        </li>
-                        <li>
-                            <code>function changeEnvironmentVariable($key,$value) {}</code>
-                            <br/>
-                            <span>Realiza a mudança das variaveis de ambiente</span>
-                            <br/>
-                            <span><u>Result:</u>
-                                <?php
-                                    //
                                 ?>
                             </span>
                         </li>
@@ -358,6 +347,17 @@
                             <span>Verifica se a rota esta ativa.</span>
                             <br/>
                             <span><u>Result:</u> <?php echo '...' ?></span>
+                        </li>
+                        <li>
+                            <code>function changeEnvironmentVariable($key,$value) {}</code>
+                            <br/>
+                            <span>Realiza a mudança das variaveis de ambiente</span>
+                            <br/>
+                            <span><u>Result:</u>
+                                <?php
+                                //
+                                ?>
+                            </span>
                         </li>
                     </ul>
                 </div>

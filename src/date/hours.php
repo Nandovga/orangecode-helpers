@@ -1,10 +1,11 @@
 <?php
-if (!function_exists("decimalToHours")){
+if (!function_exists("DecimalToHours")){
     /**
+     * Converte decimal para horas
      * @param float $decimal
      * @return string
      */
-    function decimalToHours(float $decimal): string
+    function DecimalToHours(float $decimal): string
     {
         $decimal = round($decimal, 2);
         $division = explode('.', $decimal);
@@ -20,13 +21,14 @@ if (!function_exists("decimalToHours")){
     }
 }
 
-if (!function_exists('hoursToDecimal')) {
+if (!function_exists('HoursToDecimal')) {
     /**
+     * Converte horas para decimal
      * @param string $hours
      * @param int $decimais
      * @return float
      */
-    function hoursToDecimal(string $hours, int $decimais = 2): float
+    function HoursToDecimal(string $hours, int $decimais = 2): float
     {
         if (!strstr($hours, ':'))
             return 0;
@@ -38,12 +40,13 @@ if (!function_exists('hoursToDecimal')) {
     }
 }
 
-if (!function_exists('hoursToMinute')) {
+if (!function_exists('HoursToMinute')) {
     /**
+     * Converte horas para minuto
      * @param string $value
      * @return int
      */
-    function hoursToMinute(string $value): int
+    function HoursToMinute(string $value): int
     {
         if (strstr($value, ":")) {
             $arrayValue = explode(":", $value);
@@ -55,12 +58,13 @@ if (!function_exists('hoursToMinute')) {
     }
 }
 
-if (!function_exists('minuteToHours')) {
+if (!function_exists('MinuteToHours')) {
     /**
+     * Converte minutos para horas
      * @param int|float $valor
      * @return string
      */
-    function minuteToHours(int|float $valor): string
+    function MinuteToHours(int|float $valor): string
     {
         $division = number_format($valor / 60, 2, ',', ''); // valor decimal
         $arrayValue = explode(",", $division);
@@ -74,15 +78,15 @@ if (!function_exists('minuteToHours')) {
     }
 }
 
-if (!function_exists('secondsToHours')) {
+if (!function_exists('SecondsToHours')) {
     /**
+     * Converte segundos para horas
      * @param int $seconds
      * @return string
      */
-    function secondsToHours(int $seconds): string
+    function SecondsToHours(int $seconds): string
     {
         $minutes = $seconds / 60;
         return floatval(number_format($minutes / 60, 2, '.', ''));
     }
 }
-

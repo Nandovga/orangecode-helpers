@@ -1,14 +1,11 @@
 <?php
-
-/**
- * Gera senha de forma randomica
- */
-if (!function_exists('genereteKey')) {
+if (!function_exists('GenereteKey')) {
     /**
+     * Gera senha de forma randomica.
      * @param int $number
      * @return string
      */
-    function genereteKey(int $number = 8): string
+    function GenereteKey(int $number = 8): string
     {
         $keys   = 'a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-x-y-w-z';
         $keys  .= '-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-X-Y-W-Z';

@@ -1,6 +1,7 @@
 <?php
 if (!function_exists('EnumToArray')) {
     /**
+     * Utilitário para converter um enumerador (enum) em um array associativo com diferentes formatos.
      * @param array $enum
      * @param string|null $type
      * @return array
@@ -30,7 +31,7 @@ if (!function_exists('BuildTree')) {
      * @param string|null $type
      * @return array
      */
-    function BuildTree(array $data)
+    function BuildTree(array $data): array
     {
         $nodes = [];
         foreach ($data as $item)
@@ -48,15 +49,14 @@ if (!function_exists('BuildTree')) {
     }
 }
 
-if (!function_exists('mask')) {
-
+if (!function_exists('Mask')) {
     /**
-     * Aplica a mascar nas string
+     * Utilizada para aplicar uma máscara a um determinado valor.
      * @param string $value
      * @param string $mask
      * @return string
      */
-    function mask(string $value, string $mask): string
+    function Mask(string $value, string $mask): string
     {
         $maskared = '';
         $k = 0;
@@ -74,40 +74,3 @@ if (!function_exists('mask')) {
         return $maskared;
     }
 }
-
-if (!function_exists('changeEnvironmentVariable')) {
-
-    /**
-     * Realiza a mudança das variaveis de ambiente
-     * @param $key
-     * @param $value
-     */
-    function changeEnvironmentVariable($key,$value)
-    {
-        $path = base_path('.env');
-
-        if(is_bool(env($key)))
-        {
-            $old = env($key)? 'true' : 'false';
-        }
-        elseif(env($key)===null){
-            $old = 'null';
-        }
-        else{
-            $old = env($key);
-        }
-
-        if (file_exists($path)) {
-            file_put_contents($path, str_replace(
-                "$key=".$old, "$key=".$value, file_get_contents($path)
-            ));
-        }
-    }
-}
-
-
-
-
-
-
-

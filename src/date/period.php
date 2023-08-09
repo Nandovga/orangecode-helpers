@@ -1,12 +1,12 @@
 <?php
-if (!function_exists('sumHours')) {
+if (!function_exists('SumHours')) {
     /**
      * Recebe um array de horas em string e retorna a soma das diferenças entre os pares consecutivos de horas
      * convertidas para decimal, desde que o número de elementos no array seja par.
      * @param array $hours
      * @return float
      */
-    function sumHours(array $hours): float
+    function SumHours(array $hours): float
     {
         if (count($hours) % 2 !== 0) return 0;
         $count = null;
