@@ -1,6 +1,7 @@
 <?php
 if (!function_exists('EnumToArray')) {
     /**
+     * Utilitário para converter um enumerador (enum) em um array associativo com diferentes formatos.
      * @param array $enum
      * @param string|null $type
      * @return array
@@ -30,7 +31,7 @@ if (!function_exists('BuildTree')) {
      * @param string|null $type
      * @return array
      */
-    function BuildTree(array $data)
+    function BuildTree(array $data): array
     {
         $nodes = [];
         foreach ($data as $item)
@@ -67,5 +68,31 @@ if (!function_exists('BuildTreeExists')) {
                 $i++;
         }
         return array_values($data);
+    }
+}
+
+if (!function_exists('Mask')) {
+    /**
+     * Utilizada para aplicar uma máscara a um determinado valor.
+     * @param string $value
+     * @param string $mask
+     * @return string
+     */
+    function Mask(string $value, string $mask): string
+    {
+        $maskared = '';
+        $k = 0;
+        for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+            if ($mask[$i] == '#') {
+                if (isset($value[$k])) {
+                    $maskared .= $value[$k++];
+                }
+            } else {
+                if (isset($mask[$i])) {
+                    $maskared .= $mask[$i];
+                }
+            }
+        }
+        return $maskared;
     }
 }

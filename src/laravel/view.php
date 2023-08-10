@@ -1,12 +1,12 @@
 <?php
-if (!function_exists("isActiveRoute")){
+if (!function_exists("IsActiveRoute")){
     /**
      * @param string|array $route
      * @param mixed $return
      * @param mixed $falied
      * @return mixed
      */
-    function isActiveRoute(
+    function IsActiveRoute(
         string | array $route,
         mixed $return = 'active',
         mixed $falied = ""
@@ -18,5 +18,36 @@ if (!function_exists("isActiveRoute")){
         if (is_array($route))
             return in_array($url, $route) ? $return : $falied;
         return $url === $route ? $return : $falied;
+    }
+}
+
+if (!function_exists('ChangeEnvironmentVariable')) {
+
+    /**
+     * Realiza a mudança das variaveis de ambiente
+     * @param $key
+     * @param $value
+     * @return void
+     */
+    function ChangeEnvironmentVariable($key,$value): bool
+    {
+        $path = base_path('.env');
+
+        if(is_bool(env($key)))
+        {
+            $old = env($key)? 'true' : 'false';
+        }
+        elseif(env($key)===null){
+            $old = 'null';
+        }
+        else{
+            $old = env($key);
+        }
+
+        if (file_exists($path)) {
+            file_put_contents($path, str_replace(
+                "$key=".$old, "$key=".$value, file_get_contents($path)
+            ));
+        }
     }
 }
