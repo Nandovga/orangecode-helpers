@@ -136,7 +136,7 @@
                             <br/>
                             <span><u>Result:</u>
                                 <?php
-                                    var_dump(DecimalToHours(1.5));
+                                    var_dump(DecimalToHours(5.899));
                                 ?>
                             </span>
                         </li>
