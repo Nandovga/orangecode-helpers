@@ -9,9 +9,7 @@ class Time
         private string $inicio = '08:00',
         private string $fim = '18:00'
     )
-    {
-        //
-    }
+    { }
 
     /**
      * Calcula a diferença em horas comerciais entre a data informada e a horas do segundo paramentro.
@@ -69,7 +67,7 @@ class Time
             'minutos' => 0,
             'segundos' => 0
         ];
-        $diff = $start->diff($end); var_dump($diff);
+        $diff = $start->diff($end);
 
         /**
          * Adição das horas
