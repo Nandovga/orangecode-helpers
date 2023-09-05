@@ -2,9 +2,9 @@
 
 namespace Orangecode\Helpers\Repository;
 
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 trait RepositoryDataBase
 {
