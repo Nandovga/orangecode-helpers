@@ -2,10 +2,9 @@
 
 namespace Orangecode\Helpers\Service;
 
-use Illuminate\Contracts\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Orangecode\Helpers\Repository\Repository;
 use Orangecode\Helpers\Service\Response\ServiceResponse;
 
@@ -35,9 +34,9 @@ abstract class ServiceBase implements Service
      * @param array|null $where
      * @return Collection|Model|null
      */
-    public function find(int $id = null, ?Builder $query = null): Collection | Model | null
+    public function find(int $id = null): Collection | Model | null
     {
-        return $this->repository->find($id, $query);
+        return $this->repository->find($id);
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Orangecode\Helpers\Repository;
 
-use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -27,8 +26,7 @@ interface Repository
 
     /**
      * @param int|null $id
-     * @param Builder|null $query
      * @return Collection|Model|null
      */
-    public function find(int $id = null, ?Builder $query = null): Collection | Model | null;
+    public function find(int $id = null): Collection | Model | null;
 }

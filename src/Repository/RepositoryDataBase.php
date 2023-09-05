@@ -2,7 +2,6 @@
 
 namespace Orangecode\Helpers\Repository;
 
-use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
@@ -43,15 +42,12 @@ trait RepositoryDataBase
 
     /**
      * @param int|null $id
-     * @param Builder|null $query
      * @return Collection|Model|null
      */
-    public function find(int $id = null, ?Builder $query = null): Collection | Model | null
+    public function find(int $id = null): Collection|Model|null
     {
         if (!empty($id))
             return $this->model::findOrFail($id);
-        if (empty($where))
-            return $this->model::all();
-        return $query->get();
+        return $this->model::all();
     }
 }
