@@ -11,7 +11,7 @@ class Field extends \Exception
     public function render(): JsonResponse
     {
         return response()->json([
-            "errors" => json_encode($this->message)
+            "errors" => json_decode($this->message)
         ], $this->getCode());
     }
 }
