@@ -30,5 +30,8 @@
   "require": {
     "php": "^8.1",
     "ext-calendar": "*"
+  },
+  "require-dev": {
+    "laravel/framework": "^v10.00"
   }
 }
