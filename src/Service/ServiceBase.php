@@ -44,11 +44,11 @@ abstract class ServiceBase implements Service
      * @param Request $request
      * @return void
      */
-    public function manager(Request $request): void
+    public function manager(Request $request): mixed
     {
         $data = $this->validated($request);
         try {
-            $this->repository->save($data);
+            return $this->repository->save($data);
         } catch (\Exception $exception) {
             if ($exception->getCode() == "23000")
                 abort(400, "Erro no processamento do banco de dados. ({$exception->getMessage()})");

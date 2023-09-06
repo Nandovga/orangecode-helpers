@@ -18,7 +18,7 @@ interface Service
      * @param Request $request
      * @return mixed
      */
-    public function manager(Request $request): void;
+    public function manager(Request $request): mixed;
 
     /**
      * @param Request $request
