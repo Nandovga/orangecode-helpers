@@ -81,4 +81,12 @@ abstract class ServiceBase implements Service
     {
         return [];
     }
+
+    /**
+     * @return Model
+     */
+    public function getModel(): Model
+    {
+        return $this->repository->getModel();
+    }
 }

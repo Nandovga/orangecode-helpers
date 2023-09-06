@@ -31,4 +31,9 @@ interface Service
      * @return array
      */
     public function validated(Request $request): array;
+
+    /**
+     * @return Model
+     */
+    public function getModel(): Model;
 }
