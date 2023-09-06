@@ -32,7 +32,7 @@ class ServiceResponse
      */
     public function responseSessionMessage(string $message, Message $type = Message::Success): ServiceResponse
     {
-        session()->flash("message");
+        session()->flash("message", $message);
         session()->flash("messageType", $type);
         return $this;
     }
