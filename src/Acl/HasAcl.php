@@ -17,12 +17,14 @@ trait HasAcl
     {
         $acl = session()->get("acl_" . self::$acl_app . "_permissions");
         $validated = false;
-        if (is_int($permission))
-            $validated = in_array($permission, $acl);
-        else
-            $validated = collect($acl)->filter(function ($item) use ($permission) {
-                    return in_array($item, $permission);
-                })->count() > 0;
+        if (is_array($acl)) {
+            if (is_int($permission))
+                $validated = in_array($permission, $acl);
+            else
+                $validated = collect($acl)->filter(function ($item) use ($permission) {
+                        return in_array($item, $permission);
+                    })->count() > 0;
+        }
         if ($exception && !$validated)
             throw new Acl("Você não possui permissão para acessar este recurso!", 403);
         return $validated;
